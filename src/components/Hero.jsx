@@ -172,7 +172,7 @@ export default function Hero() {
                 <div className="animate-in fade-in zoom-in-95 duration-200">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 ring-1 ring-slate-900/5">
                     <img
-                      src="/daifa.jpg"
+                      src={import.meta.env.BASE_URL + 'daifa.jpg'}
                       alt="Da'ifa Maulana"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
