@@ -1,95 +1,77 @@
-import { useState } from 'react'
 import Section from './Section'
+import { Cpu, Star, Layers, Sparkles, Code } from 'lucide-react'
 
-const skills = [
-  { icon: '🌐', name: 'HTML & CSS', level: 'Dasar', color: '#fb923c', pct: 55 },
-  { icon: '⚡', name: 'JavaScript', level: 'Dasar', color: '#4f8ef7', pct: 45 },
-  { icon: '⚛️', name: 'React.js', level: 'Dasar', color: '#00d4ff', pct: 40 },
-  { icon: '🎨', name: 'Tailwind CSS', level: 'Dasar', color: '#4f8ef7', pct: 50 },
-  { icon: '🐘', name: 'PHP', level: 'Dasar', color: '#a78bfa', pct: 45 },
-  { icon: '☕', name: 'Java', level: 'Dasar', color: '#fb923c', pct: 35 },
-  { icon: '🗄️', name: 'MySQL', level: 'Dasar', color: '#4f8ef7', pct: 45 },
-  { icon: '⚡', name: 'Supabase', level: 'Dasar', color: '#34d399', pct: 40 },
-  { icon: '🤖', name: 'AI-Assisted Dev', level: 'Aktif', color: '#00d4ff', pct: 75 },
-  { icon: '🔧', name: 'Web Debugging', level: 'Dasar', color: '#a78bfa', pct: 40 },
+const tiers = [
+  {
+    label: 'Utama & Paling Sering Dipakai',
+    icon: Star,
+    badge: 'Core Stack',
+    style: 'border-accent/40 dark:border-accent-dark/40 bg-gradient-to-b from-blue-50/40 via-white/80 to-white/80 dark:from-blue-950/20 dark:via-slate-900/80 dark:to-slate-900/80 shadow-md',
+    chipStyle: 'bg-accent dark:bg-accent-dark text-white font-semibold shadow-sm shadow-blue-500/20',
+    items: ['React.js', 'Supabase', 'Tailwind CSS', 'Technical SEO', 'JavaScript (ES6+)'],
+  },
+  {
+    label: 'Pernah Dikerjakan / Berpengalaman',
+    icon: Layers,
+    badge: 'Familiar Stack',
+    style: 'border-slate-200/90 dark:border-slate-800/90 bg-white/80 dark:bg-slate-900/80',
+    chipStyle: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/70 dark:border-slate-700/70',
+    items: ['PHP', 'HTML5 & CSS3', 'MySQL', 'Next.js', 'Vercel Deployment', 'Git & GitHub'],
+  },
+  {
+    label: 'AI-Assisted & Terus Dieksplorasi',
+    icon: Sparkles,
+    badge: 'Learning / AI-Powered',
+    style: 'border-slate-200/90 dark:border-slate-800/90 bg-white/80 dark:bg-slate-900/80',
+    chipStyle: 'bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200/60 dark:border-purple-800/60',
+    items: ['Prompt Engineering & AI Coding', 'TypeScript', 'Laravel', 'Java (OOP)', 'REST APIs'],
+  },
 ]
 
 export default function Skills() {
-  const [hovered, setHovered] = useState(null)
-  const [active, setActive] = useState(null)
-
   return (
-    <Section id="skills" num="03" title="Familiar Dengan">
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-        gap: 16,
-      }}>
-        {skills.map((s, i) => (
-          <div
-            key={i}
-            onMouseEnter={() => setHovered(i)}
-            onMouseLeave={() => setHovered(null)}
-            onClick={() => setActive(active === i ? null : i)}
-            style={{
-              background: hovered === i || active === i
-                ? `linear-gradient(135deg, rgba(${hexToRgb(s.color)},0.12), var(--card))`
-                : 'var(--card)',
-              border: `1px solid ${hovered === i || active === i ? s.color + '55' : 'var(--border)'}`,
-              borderRadius: 20, padding: '24px 20px',
-              cursor: 'pointer', position: 'relative', overflow: 'hidden',
-              transform: hovered === i ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
-              boxShadow: hovered === i ? `0 20px 40px rgba(0,0,0,0.4), 0 0 30px ${s.color}20` : 'none',
-              transition: 'all 0.35s cubic-bezier(0.16,1,0.3,1)',
-            }}
-          >
-            {/* Top glow */}
-            <div style={{
-              position: 'absolute', top: 0, left: 0, right: 0, height: 2,
-              background: `linear-gradient(90deg, transparent, ${s.color}, transparent)`,
-              opacity: hovered === i || active === i ? 1 : 0,
-              transition: 'opacity 0.3s',
-            }}/>
+    <Section
+      id="skills"
+      icon={Cpu}
+      title="Keahlian & Penguasaan Teknologi"
+      subtitle="Teknologi dan tools yang rutin saya gunakan dalam pengembangan web"
+    >
+      <div className="grid md:grid-cols-3 gap-6">
+        {tiers.map((t, i) => {
+          const Icon = t.icon
+          return (
+            <div
+              key={i}
+              className={`p-6 rounded-3xl border ${t.style} backdrop-blur-xl space-y-4 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between`}
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-accent dark:text-accent-dark">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    {t.badge}
+                  </span>
+                </div>
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">
+                  {t.label}
+                </h3>
+              </div>
 
-            <div style={{ fontSize: 32, marginBottom: 12 }}>{s.icon}</div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>
-              {s.name}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {t.items.map((s, j) => (
+                  <span
+                    key={j}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-medium ${t.chipStyle}`}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div style={{
-              fontFamily: 'var(--mono)', fontSize: 10,
-              color: hovered === i ? s.color : 'var(--muted)',
-              letterSpacing: 1, marginBottom: 14,
-              transition: 'color 0.3s',
-            }}>{s.level.toUpperCase()}</div>
-
-            {/* Progress bar */}
-            <div style={{
-              height: 3, background: 'var(--border)', borderRadius: 2, overflow: 'hidden',
-            }}>
-              <div style={{
-                height: '100%', borderRadius: 2,
-                background: `linear-gradient(90deg, ${s.color}, ${s.color}88)`,
-                width: hovered === i || active === i ? `${s.pct}%` : '0%',
-                transition: 'width 0.6s cubic-bezier(0.16,1,0.3,1)',
-                boxShadow: `0 0 8px ${s.color}`,
-              }}/>
-            </div>
-            <div style={{
-              fontFamily: 'var(--mono)', fontSize: 9, color: s.color,
-              marginTop: 4, textAlign: 'right',
-              opacity: hovered === i || active === i ? 1 : 0,
-              transition: 'opacity 0.3s',
-            }}>{s.pct}%</div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </Section>
   )
-}
-
-function hexToRgb(hex) {
-  const r = parseInt(hex.slice(1,3),16)
-  const g = parseInt(hex.slice(3,5),16)
-  const b = parseInt(hex.slice(5,7),16)
-  return `${r},${g},${b}`
 }
