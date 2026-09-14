@@ -31,9 +31,6 @@ export default function Organisasi() {
     },
   ]
 
-  const sertifikat = [
-    'Google Gemini AI Developer Certification',
-  ]
 
   return (
     <Section
@@ -69,20 +66,68 @@ export default function Organisasi() {
         })}
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 p-5 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md">
-        <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-200">
-          <Award className="w-4 h-4 text-amber-500" />
-          <span>{lang === 'id' ? 'Sertifikasi Resmi:' : 'Official Certifications:'}</span>
+      {/* Certifications Section */}
+      <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800/90 shadow-md backdrop-blur-xl hover:shadow-xl transition-all relative overflow-hidden group">
+        {/* Subtle background glow */}
+        <div className="absolute -top-12 -right-12 w-56 h-56 bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
+
+        <div className="space-y-6 relative z-10">
+          {/* Header row */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-200/60 dark:border-emerald-800/60">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Google for Education</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+                {lang === 'id' ? 'Siswa Tersertifikasi Gemini' : 'Gemini Certified Student'}
+                <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">
+                {lang === 'id'
+                  ? 'Kualifikasi Universitas · Diterbitkan: 20 Agt 2026 (Berlaku s/d 20 Agt 2029)'
+                  : 'University Qualification · Issued: Aug 20, 2026 (Valid thru Aug 20, 2029)'}
+              </p>
+            </div>
+
+            <a
+              href={`${import.meta.env.BASE_URL}sertifikat-gemini.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 active:scale-95 shrink-0 group/btn"
+            >
+              <span>{lang === 'id' ? 'Buka Sertifikat PDF' : 'Open PDF Certificate'}</span>
+              <ShieldCheck className="w-4 h-4 text-white/80 group-hover/btn:scale-110 transition-transform" />
+            </a>
+          </div>
+
+          {/* Direct Full Certificate Preview Image */}
+          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 shadow-inner group/img">
+            <a
+              href={`${import.meta.env.BASE_URL}sertifikat-gemini.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block cursor-pointer"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}sertifikat-gemini-full.png`}
+                alt="Sertifikat Resmi Siswa Tersertifikasi Gemini - Google for Education"
+                className="w-full h-auto object-cover max-h-[480px] group-hover/img:scale-[1.01] transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-slate-900/0 group-hover/img:bg-slate-900/10 transition-colors flex items-center justify-center">
+                <span className="opacity-0 group-hover/img:opacity-100 transition-opacity px-4 py-2 rounded-xl bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white font-bold text-xs shadow-lg backdrop-blur-md">
+                  {lang === 'id' ? 'Klik untuk memperbesar / buka PDF' : 'Click to enlarge / open PDF'}
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+            {lang === 'id'
+              ? 'Kualifikasi ini diberikan kepada DA\'IFA MAULANA karena telah menunjukkan pengetahuan, keterampilan, dan kompetensi dasar yang diperlukan untuk menggunakan AI Google di lingkungan pendidikan & alur kerja teknologi modern.'
+              : 'This qualification was awarded to DA\'IFA MAULANA for demonstrating essential knowledge, skills, and foundational competency required to utilize Google AI in educational & modern technology workflows.'}
+          </p>
         </div>
-        {sertifikat.map((s, i) => (
-          <span
-            key={i}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-blue-50 dark:bg-accent-dark/10 border border-blue-200/60 dark:border-blue-800/60 text-accent dark:text-accent-dark shadow-sm"
-          >
-            <ShieldCheck className="w-3.5 h-3.5" />
-            {s}
-          </span>
-        ))}
       </div>
     </Section>
   )

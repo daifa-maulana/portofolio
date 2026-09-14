@@ -86,13 +86,21 @@ export const translations = {
       subSeo: 'Optimasi performa pencarian organik, analytics, & AI'
     },
     pendidikan: {
-      title: 'Pendidikan Formal',
-      subtitle: 'Latar belakang akademis di bidang teknologi informasi',
+      title: 'Pendidikan & Sertifikasi',
+      subtitle: 'Latar belakang akademis dan sertifikasi kompetensi teknologi resmi',
       statusBadge: 'S1 · Mahasiswa Aktif (Semester 5)',
       degree: 'S1 Teknik Informatika',
       campus: 'Universitas Teknologi Digital (UTD), Bandung',
       statusTitle: 'Status Studi',
-      statusValue: 'Aktif (Semester 5)'
+      statusValue: 'Aktif (Semester 5)',
+      certTitle: 'Sertifikasi Resmi',
+      certBadge: 'Google for Education',
+      certName: 'Siswa Tersertifikasi Gemini',
+      certLevel: 'Kualifikasi Universitas',
+      certIssuer: 'Google for Education',
+      certDate: '20 Agt 2026 – 20 Agt 2029',
+      certDesc: 'Memiliki pengetahuan, keterampilan, dan kompetensi dasar yang diperlukan untuk menggunakan AI Google di lingkungan pendidikan & software development.',
+      certBtn: 'Lihat Sertifikat PDF'
     },
     organisasi: {
       title: 'Pengalaman Organisasi',
@@ -216,13 +224,21 @@ export const translations = {
       subSeo: 'Organic search optimization, analytics, & AI tools'
     },
     pendidikan: {
-      title: 'Formal Education',
-      subtitle: 'Academic background in Information Technology',
+      title: 'Education & Certifications',
+      subtitle: 'Academic background and official technology certifications',
       statusBadge: 'B.Sc · Active Student (5th Semester)',
       degree: 'B.Sc. in Computer Science',
       campus: 'Digital Technology University (UTD), Bandung',
       statusTitle: 'Study Status',
-      statusValue: 'Active (Semester 5)'
+      statusValue: 'Active (Semester 5)',
+      certTitle: 'Official Certifications',
+      certBadge: 'Google for Education',
+      certName: 'Gemini Certified Student',
+      certLevel: 'University Qualification',
+      certIssuer: 'Google for Education',
+      certDate: 'Aug 20, 2026 – Aug 20, 2029',
+      certDesc: 'Demonstrated essential knowledge, skills, and foundational competency required to utilize Google AI in educational & software engineering environments.',
+      certBtn: 'View PDF Certificate'
     },
     organisasi: {
       title: 'Leadership & Community',
