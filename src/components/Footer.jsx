@@ -1,15 +1,22 @@
-import { ArrowUp, Heart } from 'lucide-react'
-
-const links = [
-  { label: 'Profil', href: '#profil' },
-  { label: 'Pengalaman', href: '#pengalaman' },
-  { label: 'Keahlian', href: '#skills' },
-  { label: 'SEO & Marketing', href: '#digital-marketing' },
-  { label: 'Proyek', href: '#proyek' },
-  { label: 'Kontak', href: '#kontak' },
-]
+import { ArrowUp } from 'lucide-react'
+import useLanguage from '../hooks/useLanguage'
+import { translations } from '../data/translations'
 
 export default function Footer() {
+  const [lang] = useLanguage()
+  const t = translations[lang].footer
+  const navT = translations[lang].nav
+
+  const links = [
+    { label: navT.profil, href: '#profil' },
+    { label: navT.pengalaman, href: '#pengalaman' },
+    { label: navT.proyek, href: '#proyek' },
+    { label: navT.skills, href: '#skills' },
+    { label: navT.pendidikan, href: '#pendidikan' },
+    { label: navT.organisasi, href: '#organisasi' },
+    { label: navT.kontak, href: '#kontak' },
+  ]
+
   return (
     <footer className="border-t border-slate-200/80 dark:border-slate-800/80 mt-16 bg-white/40 dark:bg-slate-950/40 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -20,8 +27,8 @@ export default function Footer() {
               Da'ifa Maulana
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center md:justify-start gap-1">
-            © 2026 Da'ifa Maulana. Dibuat dengan dedikasi & optimasi modern.
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            © 2026 {t.rights}
           </p>
         </div>
 

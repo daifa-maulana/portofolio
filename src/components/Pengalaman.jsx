@@ -1,22 +1,18 @@
 import Section from './Section'
 import { Briefcase, Calendar, Building2, CheckCircle2, ShieldCheck, Globe } from 'lucide-react'
-
-const highlights = [
-  'Pembuatan & pengelolaan situs web pusat baru (geo-metri.id)',
-  'Pembuatan & pengelolaan 4 website cabang perusahaan secara berkala',
-  'Optimasi Technical SEO hingga mencapai Site Health Score 100/100 di Ahrefs Audit',
-  'Audit dan pemeliharaan indeksasi via Google Search Console (GSC)',
-  'Optimasi Google Business Profile (GBP) untuk visibilitas cabang perusahaan',
-  'Pengembangan fitur dan antarmuka interaktif menggunakan React.js, Tailwind CSS, & Supabase'
-]
+import useLanguage from '../hooks/useLanguage'
+import { translations } from '../data/translations'
 
 export default function Pengalaman() {
+  const [lang] = useLanguage()
+  const t = translations[lang].pengalaman
+
   return (
     <Section
       id="pengalaman"
       icon={Briefcase}
-      title="Pengalaman Kerja & Magang"
-      subtitle="Jejak profesional dan kontribusi dalam proyek industri nyata"
+      title={t.title}
+      subtitle={t.subtitle}
     >
       <div className="relative pl-6 sm:pl-8 border-l-2 border-accent/40 dark:border-accent-dark/40 ml-2">
         <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-[#090d16] border-4 border-accent dark:border-accent-dark shadow-md" />
@@ -26,25 +22,25 @@ export default function Pengalaman() {
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-bold mb-2 border border-emerald-200 dark:border-emerald-800">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                Magang Aktif
+                {t.status}
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                Web Developer Intern
+                {t.role}
               </h3>
               <p className="text-accent dark:text-accent-dark font-semibold text-sm sm:text-base flex items-center gap-1.5 mt-0.5">
                 <Building2 className="w-4 h-4" />
-                Geometri Indonesia
+                {t.company}
               </p>
             </div>
             
             <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/60 dark:border-slate-700/60 w-fit">
               <Calendar className="w-3.5 h-3.5 text-accent dark:text-accent-dark" />
-              2026 – Sekarang
+              {t.period}
             </div>
           </div>
 
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
-            Bertanggung jawab penuh atas pembuatan & pengelolaan situs web pusat baru (<strong className="text-slate-900 dark:text-white font-mono">geo-metri.id</strong>), pembuatan & pemeliharaan 4 website cabang perusahaan, serta optimasi performa mesin pencari (*Technical SEO*).
+            {t.desc}
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 pt-2">
@@ -53,8 +49,8 @@ export default function Pengalaman() {
                 <Globe className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-sm font-bold text-slate-900 dark:text-white">Web Pusat & 4 Cabang</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Dibuat & dikelola secara rutin</div>
+                <div className="text-sm font-bold text-slate-900 dark:text-white">{t.cardWebTitle}</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400">{t.cardWebSub}</div>
               </div>
             </div>
 
@@ -63,18 +59,18 @@ export default function Pengalaman() {
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-sm font-bold text-slate-900 dark:text-white">Site Health 100/100</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Terverifikasi Ahrefs Audit</div>
+                <div className="text-sm font-bold text-slate-900 dark:text-white">{t.cardSeoTitle}</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400">{t.cardSeoSub}</div>
               </div>
             </div>
           </div>
 
           <div className="space-y-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
             <div className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Tanggung Jawab & Pencapaian Utama:
+              {t.responsibilitiesTitle}
             </div>
             <div className="space-y-2">
-              {highlights.map((h, i) => (
+              {t.highlights.map((h, i) => (
                 <div key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-accent dark:text-accent-dark shrink-0 mt-0.5" />
                   <span>{h}</span>

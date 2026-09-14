@@ -1,5 +1,7 @@
 import Section from './Section'
 import { Cpu, Code2, Database, Search } from 'lucide-react'
+import useLanguage from '../hooks/useLanguage'
+import { translations } from '../data/translations'
 import {
   ReactIcon,
   TailwindIcon,
@@ -39,18 +41,21 @@ const seoStack = [
   { name: 'Ahrefs Audit', desc: 'Site Health 100/100', icon: AhrefsIcon, color: 'text-blue-600 bg-blue-600/10 border-blue-600/30' },
   { name: 'Google Search Console', desc: 'Indexing & Crawling', icon: GscIcon, color: 'text-sky-500 bg-sky-500/10 border-sky-500/30' },
   { name: 'Google Business Profile', desc: 'Local SEO Optimization', icon: GbpIcon, color: 'text-rose-500 bg-rose-500/10 border-rose-500/30' },
-  { name: 'Google Analytics (GA4)', desc: 'Traffic & Conversion Analytics', icon: Ga4Icon, color: 'text-amber-500 bg-amber-500/10 border-amber-500/30' },
+  { name: 'Google Analytics (GA4)', desc: 'Traffic Analytics', icon: Ga4Icon, color: 'text-amber-500 bg-amber-500/10 border-amber-500/30' },
   { name: 'Vercel Deployment', desc: 'Automated CI/CD', icon: VercelIcon, color: 'text-slate-800 dark:text-slate-200 bg-slate-400/10 border-slate-400/30' },
   { name: 'AI Assistant Workflow', desc: 'Accelerated Coding', icon: Cpu, color: 'text-purple-500 bg-purple-500/10 border-purple-500/30' },
 ]
 
 export default function Skills() {
+  const [lang] = useLanguage()
+  const t = translations[lang].skills
+
   return (
     <Section
       id="skills"
       icon={Cpu}
-      title="Keahlian & Stack Teknologi"
-      subtitle="Teknologi dan tools yang rutin digunakan dalam pengembangan web & optimasi digital"
+      title={t.title}
+      subtitle={t.subtitle}
     >
       <div className="space-y-6 sm:space-y-8">
         {/* 1. FRONTEND SLIDER */}
@@ -60,8 +65,8 @@ export default function Skills() {
               <Code2 className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Frontend & UI Web</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Framework, styling, dan antarmuka interaktif</p>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{t.catFrontend}</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">{t.subFrontend}</p>
             </div>
           </div>
 
@@ -102,8 +107,8 @@ export default function Skills() {
               <Database className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Backend & Database</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Pengelolaan basis data, otentikasi, dan server API</p>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{t.catBackend}</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">{t.subBackend}</p>
             </div>
           </div>
 
@@ -144,8 +149,8 @@ export default function Skills() {
               <Search className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">SEO & Workflow Tools</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Optimasi performa pencarian organik, analytics, & AI</p>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{t.catSeo}</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">{t.subSeo}</p>
             </div>
           </div>
 

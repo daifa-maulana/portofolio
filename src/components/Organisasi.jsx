@@ -1,41 +1,46 @@
 import Section from './Section'
 import { Users2, Award, Flag, Sparkles, HeartHandshake, ShieldCheck } from 'lucide-react'
-
-const orgs = [
-  {
-    icon: HeartHandshake,
-    title: 'Anggota PSDM',
-    org: 'Himpunan Mahasiswa Informatika',
-    period: '2025 – 2026',
-    desc: 'Pengembangan dan Pemberdayaan Sumber Daya Manusia (PSDM) — aktif menyusun kurikulum kaderisasi dan program pengembangan anggota.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Ketua Pelaksana',
-    org: 'Ramadhan Tech Care',
-    period: '2026',
-    desc: 'Memimpin penyelenggaraan program sosial kepedulian masyarakat terintegrasi literasi teknologi selama bulan suci Ramadhan.',
-  },
-  {
-    icon: Flag,
-    title: 'Ketua Pelaksana',
-    org: 'OSPEK Jurusan Informatika',
-    period: '2026',
-    desc: 'Mengkoordinasi seluruh divisi kepanitiaan dalam menyukseskan masa orientasi & pengenalan kultur akademis mahasiswa baru Informatika.',
-  },
-]
-
-const sertifikat = [
-  'Google Gemini AI Developer Certification',
-]
+import useLanguage from '../hooks/useLanguage'
+import { translations } from '../data/translations'
 
 export default function Organisasi() {
+  const [lang] = useLanguage()
+  const t = translations[lang].organisasi
+
+  const orgs = [
+    {
+      icon: HeartHandshake,
+      title: lang === 'id' ? 'Anggota PSDM' : 'HRD Department Member',
+      org: lang === 'id' ? 'Himpunan Mahasiswa Informatika' : 'Informatics Student Association',
+      period: '2025 – 2026',
+      desc: t.descHima,
+    },
+    {
+      icon: Sparkles,
+      title: lang === 'id' ? 'Ketua Pelaksana' : 'Project Manager',
+      org: 'Ramadhan Tech Care',
+      period: '2026',
+      desc: lang === 'id' ? 'Memimpin penyelenggaraan program sosial kepedulian masyarakat terintegrasi literasi teknologi.' : 'Led social care and technology literacy initiative program.',
+    },
+    {
+      icon: Flag,
+      title: lang === 'id' ? 'Ketua Pelaksana' : 'Lead Organizing Committee',
+      org: lang === 'id' ? 'OSPEK Jurusan Informatika' : 'Informatics Student Orientation',
+      period: '2026',
+      desc: lang === 'id' ? 'Mengkoordinasi seluruh divisi kepanitiaan dalam menyukseskan masa orientasi mahasiswa baru.' : 'Coordinated all divisions executing new student orientation.',
+    },
+  ]
+
+  const sertifikat = [
+    'Google Gemini AI Developer Certification',
+  ]
+
   return (
     <Section
       id="organisasi"
       icon={Users2}
-      title="Organisasi & Kepemimpinan"
-      subtitle="Pengalaman manajerial, kepanitiaan kampus, dan sertifikasi keahlian"
+      title={t.title}
+      subtitle={t.subtitle}
     >
       <div className="grid md:grid-cols-3 gap-6 mb-6">
         {orgs.map((o, i) => {
@@ -67,7 +72,7 @@ export default function Organisasi() {
       <div className="flex flex-wrap items-center gap-3 p-5 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md">
         <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-200">
           <Award className="w-4 h-4 text-amber-500" />
-          <span>Sertifikasi Resmi:</span>
+          <span>{lang === 'id' ? 'Sertifikasi Resmi:' : 'Official Certifications:'}</span>
         </div>
         {sertifikat.map((s, i) => (
           <span

@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Mail, Copy, Check, Send, Sparkles, Phone } from 'lucide-react'
+import { Copy, Check, Send, Sparkles } from 'lucide-react'
 import { GithubIcon, WhatsAppIcon } from './Icons'
+import useLanguage from '../hooks/useLanguage'
+import { translations } from '../data/translations'
 
 const socials = [
   {
@@ -19,6 +21,9 @@ const socials = [
 
 export default function Kontak() {
   const [copied, setCopied] = useState(false)
+  const [lang] = useLanguage()
+  const t = translations[lang].kontak
+
   const email = 'daifamaul17@gmail.com'
 
   const copyEmail = () => {
@@ -35,15 +40,15 @@ export default function Kontak() {
 
         <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-accent dark:text-accent-dark text-xs font-bold shadow-sm">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Mari Berkolaborasi</span>
+          <span>{lang === 'id' ? 'Mari Berkolaborasi' : "Let's Collaborate"}</span>
         </div>
 
         <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
-          Terbuka untuk Peluang Kerja & Diskusi
+          {t.title}
         </h2>
 
         <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-          Punya tawaran proyek web, kesempatan magang/freelance, atau sekadar ingin bertukar pikiran seputar web development & SEO? Jangan ragu untuk terhubung!
+          {t.subtitle}
         </p>
 
         {/* Email & Action Box */}
@@ -53,7 +58,7 @@ export default function Kontak() {
             <button
               onClick={copyEmail}
               className="p-1.5 rounded-lg text-accent dark:text-accent-dark hover:bg-slate-200/60 dark:hover:bg-slate-700 transition-all active:scale-90 relative"
-              title="Salin email"
+              title="Copy Email"
             >
               {copied ? (
                 <Check className="w-4 h-4 text-emerald-500 animate-in zoom-in-50 duration-200" />
@@ -68,13 +73,13 @@ export default function Kontak() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-accent dark:bg-accent-dark text-white text-sm font-semibold shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
             <Send className="w-4 h-4" />
-            <span>Kirim Email Langsung</span>
+            <span>{lang === 'id' ? 'Kirim Email Langsung' : 'Send Direct Email'}</span>
           </a>
         </div>
 
         {copied && (
           <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 animate-in fade-in duration-200">
-            ✓ Email berhasil disalin ke clipboard!
+            {lang === 'id' ? '✓ Email berhasil disalin ke clipboard!' : '✓ Email copied to clipboard!'}
           </div>
         )}
 

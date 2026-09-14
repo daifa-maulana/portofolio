@@ -1,13 +1,18 @@
 import Section from './Section'
 import { User, Sparkles, Code2, Bot, Search } from 'lucide-react'
+import useLanguage from '../hooks/useLanguage'
+import { translations } from '../data/translations'
 
 export default function Profil() {
+  const [lang] = useLanguage()
+  const t = translations[lang].profil
+
   return (
     <Section
       id="profil"
       icon={User}
-      title="Tentang Saya"
-      subtitle="Prinsip kerja, fokus pengembangan, dan latar belakang profesional"
+      title={t.title}
+      subtitle={t.subtitle}
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
         {/* Left Column: Main Narrative (Span 7) */}
@@ -15,28 +20,28 @@ export default function Profil() {
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-accent dark:text-accent-dark text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Mahasiswa Informatika · Semester 5</span>
+              <span>{t.badge}</span>
             </div>
             
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-snug">
-              Menggabungkan Pengembangan Web Modern & Performa SEO Terbaik
+              {t.heading}
             </h3>
             
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
-              Saya adalah mahasiswa S1 Teknik Informatika di Universitas Teknologi Digital (UTD) Bandung. Berfokus pada pembangunan situs web yang responsif, terstruktur dengan rapi, serta dioptimalkan agar mudah ditemukan di mesin pencari.
+              {t.paragraph1}
             </p>
 
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
-              Saat ini aktif sebagai <strong className="text-slate-900 dark:text-white">Web Developer Intern @ Geometri Indonesia</strong>, menangani pembuatan & pengelolaan website pusat baru (<span className="font-mono font-semibold text-slate-900 dark:text-white">geo-metri.id</span>) serta pembuatan & pengelolaan 4 website cabang perusahaan.
+              {t.paragraph2}
             </p>
           </div>
 
           <div className="pt-2 flex flex-wrap gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
             <span className="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60">
-              📍 Bandung, Indonesia
+              {t.location}
             </span>
             <span className="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60">
-              ⚡ Web Development & Technical SEO
+              {t.focus}
             </span>
           </div>
         </div>
@@ -48,9 +53,9 @@ export default function Profil() {
               <Code2 className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Clean & Scalable Code</h4>
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">{t.pillar1Title}</h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
-                Mengutamakan arsitektur kode modular, maintainable, dan sesuai best practices web modern.
+                {t.pillar1Desc}
               </p>
             </div>
           </div>
@@ -60,9 +65,9 @@ export default function Profil() {
               <Bot className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">AI-Powered Workflow</h4>
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">{t.pillar2Title}</h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
-                Memadukan bantuan AI untuk efisiensi prototyping, refactoring cepat, dan eksplorasi teknologi baru.
+                {t.pillar2Desc}
               </p>
             </div>
           </div>
@@ -72,9 +77,9 @@ export default function Profil() {
               <Search className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Technical SEO Focus</h4>
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">{t.pillar3Title}</h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
-                Memastikan struktur halaman, indeksasi, dan site health optimal di Google Search Console & Ahrefs.
+                {t.pillar3Desc}
               </p>
             </div>
           </div>
