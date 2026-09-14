@@ -1,10 +1,9 @@
 import Hero from './components/Hero'
 import Profil from './components/Profil'
 import Pengalaman from './components/Pengalaman'
-import Pendidikan from './components/Pendidikan'
-import Skills from './components/Skills'
-import DigitalMarketing from './components/DigitalMarketing'
 import Proyek from './components/Proyek'
+import Skills from './components/Skills'
+import Pendidikan from './components/Pendidikan'
 import Organisasi from './components/Organisasi'
 import Kontak from './components/Kontak'
 import Footer from './components/Footer'
@@ -23,10 +22,9 @@ export default function App() {
         <Hero />
         <Profil />
         <Pengalaman />
-        <Pendidikan />
-        <Skills />
-        <DigitalMarketing />
         <Proyek />
+        <Skills />
+        <Pendidikan />
         <Organisasi />
         <Kontak />
       </main>
