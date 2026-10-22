@@ -1,6 +1,8 @@
 # CV Da'ifa Maulana
 
-Website CV interaktif berbasis React + Vite dengan animasi dan efek modern.
+Website CV/portofolio interaktif berbasis **React 18 + Vite + Tailwind CSS** dengan dukungan dark mode, bilingual (ID/EN), dan animasi modern.
+
+🌐 **Live:** [https://daifa-maulana.my.id](https://daifa-maulana.my.id)
 
 ## 🚀 Cara Menjalankan di Lokal
 
@@ -15,61 +17,62 @@ npm run dev
 # http://localhost:5173
 ```
 
-## 🌐 Deploy ke Vercel
+## 🚀 Deploy ke GitHub Pages
 
-### Cara 1 — Via GitHub (Recommended)
-1. Push project ini ke GitHub
-2. Buka [vercel.com](https://vercel.com) dan login
-3. Klik **"Add New Project"**
-4. Import repo GitHub kamu
-5. Biarkan semua setting default (Vercel auto-detect Vite)
-6. Klik **Deploy** — selesai! 🎉
-
-### Cara 2 — Via Vercel CLI
 ```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Deploy
-vercel
-
-# Ikuti instruksi di terminal
+# Build & deploy ke branch gh-pages
+npm run deploy
 ```
+
+Custom domain dikonfigurasi via file `public/CNAME` → `daifa-maulana.my.id`.
 
 ## 🛠️ Tech Stack
 
 - **React 18** — UI library
-- **Vite** — Build tool
-- **CSS-in-JS** — Inline styles + CSS variables
-- **Canvas API** — Animated background
+- **Vite 5** — Build tool
+- **Tailwind CSS 3** — Utility-first CSS framework
+- **Lucide React** — Icon library
 - **Intersection Observer** — Scroll animations
 
 ## 📁 Struktur Project
 
 ```
-cv-daifa/
+portofolio/
 ├── public/
-│   └── favicon.svg
+│   ├── 404.html              ← GitHub Pages SPA fallback
+│   ├── CNAME                 ← Custom domain config
+│   ├── favicon.svg
+│   ├── daifa.jpg
+│   ├── gemini-certified.png
+│   ├── sertifikat-gemini-full.png
+│   ├── sertifikat-gemini.pdf
+│   └── projects/             ← Screenshot proyek
 ├── src/
 │   ├── components/
-│   │   ├── Background.jsx   ← Animated canvas background
-│   │   ├── Card.jsx         ← Reusable card with hover effect
-│   │   ├── Cursor.jsx       ← Custom cursor
 │   │   ├── Footer.jsx
-│   │   ├── Hero.jsx         ← Landing section
-│   │   ├── Nav.jsx          ← Sticky navbar
+│   │   ├── Hero.jsx          ← Landing section
+│   │   ├── Icons.jsx         ← Custom SVG icons
+│   │   ├── Kontak.jsx
+│   │   ├── Nav.jsx           ← Sticky navbar + dark/lang toggle
 │   │   ├── Organisasi.jsx
 │   │   ├── Pendidikan.jsx
+│   │   ├── Pengalaman.jsx
 │   │   ├── Profil.jsx
 │   │   ├── Proyek.jsx
-│   │   ├── Section.jsx      ← Reusable section wrapper
+│   │   ├── Section.jsx       ← Reusable section wrapper
 │   │   └── Skills.jsx
+│   ├── data/
+│   │   └── translations.js   ← Bilingual ID/EN strings
 │   ├── hooks/
-│   │   └── useInView.js     ← Scroll reveal hook
+│   │   ├── useInView.js      ← Scroll reveal hook
+│   │   ├── useLanguage.js    ← Language toggle hook
+│   │   └── useTheme.js       ← Dark mode hook
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
 ├── index.html
 ├── package.json
+├── postcss.config.js
+├── tailwind.config.js
 └── vite.config.js
 ```

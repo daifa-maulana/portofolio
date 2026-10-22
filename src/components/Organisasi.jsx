@@ -91,7 +91,7 @@ export default function Organisasi() {
             </div>
 
             <a
-              href={`${import.meta.env.BASE_URL}sertifikat-gemini.pdf`}
+              href="/sertifikat-gemini.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 active:scale-95 shrink-0 group/btn"
@@ -104,13 +104,13 @@ export default function Organisasi() {
           {/* Direct Full Certificate Preview Image */}
           <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 shadow-inner group/img">
             <a
-              href={`${import.meta.env.BASE_URL}sertifikat-gemini.pdf`}
+              href="/sertifikat-gemini.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="block cursor-pointer"
             >
               <img
-                src={`${import.meta.env.BASE_URL}sertifikat-gemini-full.png`}
+                src="/sertifikat-gemini-full.png"
                 alt="Sertifikat Resmi Siswa Tersertifikasi Gemini - Google for Education"
                 className="w-full h-auto object-cover max-h-[480px] group-hover/img:scale-[1.01] transition-transform duration-300"
               />

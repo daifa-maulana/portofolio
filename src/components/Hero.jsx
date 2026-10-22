@@ -31,12 +31,6 @@ const techTags = [
   { name: 'Tailwind CSS', color: 'text-indigo-500 dark:text-indigo-400' }
 ]
 
-const getAssetUrl = (path) => {
-  if (!path) return ''
-  const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/'
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path
-  return base + cleanPath
-}
 
 export default function Hero() {
   const [heroTab, setHeroTab] = useState('code') // 'photo' | 'code'
@@ -180,7 +174,7 @@ export default function Hero() {
                 <div className="space-y-3">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 ring-1 ring-slate-900/5">
                     <img
-                      src={getAssetUrl('daifa.jpg')}
+                      src="/daifa.jpg"
                       alt="Da'ifa Maulana"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />

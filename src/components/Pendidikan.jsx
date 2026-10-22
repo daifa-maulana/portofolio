@@ -54,7 +54,7 @@ export default function Pendidikan() {
               {/* Badge Image Box */}
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-slate-200 dark:border-slate-700/80 p-2 shrink-0 shadow-sm flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
                 <img
-                  src={`${import.meta.env.BASE_URL}gemini-certified.png`}
+                  src="/gemini-certified.png"
                   alt="Siswa Tersertifikasi Gemini"
                   className="w-full h-full object-contain"
                 />
@@ -92,7 +92,7 @@ export default function Pendidikan() {
             </span>
 
             <a
-              href={`${import.meta.env.BASE_URL}sertifikat-gemini.pdf`}
+              href="/sertifikat-gemini.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:text-accent dark:hover:text-accent-dark border border-slate-200 dark:border-slate-700 hover:border-accent dark:hover:border-accent-dark text-xs font-bold transition-all shadow-sm active:scale-95 group/btn"
