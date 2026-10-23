@@ -125,3 +125,144 @@ body {
   background: rgba(79, 142, 247, 0.25);
   color: #93c5fd;
 }
+
+/* ==========================================================================
+   Admin CMS Light & Dark Theme Engine
+   ========================================================================== */
+
+/* Light Mode Rules for Admin CMS */
+html:not(.dark) .admin-cms {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html:not(.dark) .admin-cms .admin-header {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-color: #e2e8f0;
+}
+
+html:not(.dark) .admin-cms .admin-panel-main {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Backgrounds of cards, inputs, and boxes in light mode */
+html:not(.dark) .admin-cms .bg-slate-950,
+html:not(.dark) .admin-cms .bg-slate-950\/40,
+html:not(.dark) .admin-cms .bg-slate-950\/60,
+html:not(.dark) .admin-cms .bg-slate-950\/70,
+html:not(.dark) .admin-cms .bg-slate-950\/80 {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+html:not(.dark) .admin-cms .bg-slate-900,
+html:not(.dark) .admin-cms .bg-slate-900\/40,
+html:not(.dark) .admin-cms .bg-slate-900\/60,
+html:not(.dark) .admin-cms .bg-slate-900\/70,
+html:not(.dark) .admin-cms .bg-slate-900\/80,
+html:not(.dark) .admin-cms .bg-slate-900\/90 {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+html:not(.dark) .admin-cms .border-slate-800,
+html:not(.dark) .admin-cms .border-slate-800\/60,
+html:not(.dark) .admin-cms .border-slate-800\/80,
+html:not(.dark) .admin-cms .border-slate-800\/90 {
+  border-color: #e2e8f0;
+}
+
+html:not(.dark) .admin-cms .border-slate-700,
+html:not(.dark) .admin-cms .border-slate-700\/80 {
+  border-color: #cbd5e1;
+}
+
+/* Form inputs & textareas in light mode */
+html:not(.dark) .admin-cms input[type="text"],
+html:not(.dark) .admin-cms input[type="password"],
+html:not(.dark) .admin-cms input[type="url"],
+html:not(.dark) .admin-cms input[type="number"],
+html:not(.dark) .admin-cms textarea,
+html:not(.dark) .admin-cms select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) .admin-cms input::placeholder,
+html:not(.dark) .admin-cms textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+html:not(.dark) .admin-cms input:focus,
+html:not(.dark) .admin-cms textarea:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+/* Headings & text in light mode */
+html:not(.dark) .admin-cms h1,
+html:not(.dark) .admin-cms h2,
+html:not(.dark) .admin-cms h3,
+html:not(.dark) .admin-cms h4 {
+  color: #0f172a;
+}
+
+html:not(.dark) .admin-cms label {
+  color: #334155;
+}
+
+html:not(.dark) .admin-cms p.text-slate-400,
+html:not(.dark) .admin-cms span.text-slate-400,
+html:not(.dark) .admin-cms div.text-slate-400 {
+  color: #64748b;
+}
+
+html:not(.dark) .admin-cms .text-slate-300 {
+  color: #334155;
+}
+
+html:not(.dark) .admin-cms .text-slate-500 {
+  color: #64748b;
+}
+
+/* Sidebar navigation buttons in light mode */
+html:not(.dark) .admin-cms aside button:not(.bg-blue-600) {
+  color: #475569;
+}
+
+html:not(.dark) .admin-cms aside button:not(.bg-blue-600):hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+html:not(.dark) .admin-cms aside button:not(.bg-blue-600) span.font-mono {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+/* Header buttons in light mode */
+html:not(.dark) .admin-cms .admin-header button:not(.bg-blue-600):not(.bg-gradient-to-r) {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  color: #334155;
+}
+
+html:not(.dark) .admin-cms .admin-header button:not(.bg-blue-600):not(.bg-gradient-to-r):hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* Modals overlay & dialog in light mode */
+html:not(.dark) .admin-cms .fixed.inset-0 > div {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  color: #0f172a;
+}
+
+html:not(.dark) .admin-cms .fixed.inset-0 h3 {
+  color: #0f172a;
+}

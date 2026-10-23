@@ -2,10 +2,12 @@ import Section from './Section'
 import { User, Sparkles, Code2, Bot, Search } from 'lucide-react'
 import useLanguage from '../hooks/useLanguage'
 import { translations } from '../data/translations'
+import { usePortfolio } from '../context/PortfolioContext'
 
 export default function Profil() {
   const [lang] = useLanguage()
-  const t = translations[lang].profil
+  const { content } = usePortfolio()
+  const t = (content && content[lang]?.profil) || translations[lang].profil
 
   return (
     <Section

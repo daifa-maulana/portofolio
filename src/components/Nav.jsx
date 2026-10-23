@@ -4,14 +4,17 @@ import useLanguage from '../hooks/useLanguage'
 import { translations } from '../data/translations'
 import { Sun, Moon, Menu, X, Globe } from 'lucide-react'
 
+import { usePortfolio } from '../context/PortfolioContext'
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [theme, toggleTheme] = useTheme()
   const [lang, toggleLanguage] = useLanguage()
+  const { content } = usePortfolio()
 
-  const t = translations[lang].nav
+  const t = (content && content[lang]?.nav) || translations[lang].nav
 
   const links = [
     { label: t.profil, href: '#profil' },
@@ -53,9 +56,11 @@ export default function Nav() {
           href="#hero"
           className="group flex items-center gap-2 font-mono font-black text-slate-900 dark:text-white tracking-tight text-sm"
         >
-          <span className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            DM
-          </span>
+          <img 
+            src="/avatar.png" 
+            alt="Da'ifa Maulana" 
+            className="w-8 h-8 rounded-full object-contain group-hover:scale-105 transition-transform drop-shadow"
+          />
           <span className="font-bold tracking-normal hidden sm:inline">
             Da'ifa<span className="text-accent dark:text-accent-dark">.dev</span>
           </span>

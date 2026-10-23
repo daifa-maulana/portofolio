@@ -106,10 +106,14 @@ const proyekData = [
   },
 ]
 
+import { usePortfolio } from '../context/PortfolioContext'
+
 export default function Proyek() {
   const [activeTab, setActiveTab] = useState('all')
   const [lang] = useLanguage()
-  const t = translations[lang].proyek
+  const { projects: contextProjects, content, settings } = usePortfolio()
+  const activeProjects = contextProjects && contextProjects.length > 0 ? contextProjects : proyekData
+  const t = (content && content[lang]?.proyek) || translations[lang].proyek
 
   const categories = [
     { id: 'all', label: t.tabAll, icon: FolderGit2 },
@@ -119,8 +123,8 @@ export default function Proyek() {
   ]
 
   const filteredProyek = activeTab === 'all'
-    ? proyekData
-    : proyekData.filter(p => p.category === activeTab)
+    ? activeProjects
+    : activeProjects.filter(p => p.category === activeTab)
 
   return (
     <Section
@@ -147,7 +151,7 @@ export default function Proyek() {
               <span>{c.label}</span>
               {c.id !== 'all' && (
                 <span className="ml-1 opacity-75">
-                  ({proyekData.filter(p => p.category === c.id).length})
+                  ({activeProjects.filter(p => p.category === c.id).length})
                 </span>
               )}
             </button>
@@ -160,7 +164,7 @@ export default function Proyek() {
         {filteredProyek.map((p, i) => (
           <div
             key={i}
-            className="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 shadow-sm hover:shadow-xl hover:border-accent/40 dark:hover:border-accent-dark/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden relative h-full"
+            className={`group ${settings?.cardBorderRadius || 'rounded-2xl'} bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 shadow-sm hover:shadow-xl hover:border-accent/40 dark:hover:border-accent-dark/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden relative h-full`}
           >
             <div className="flex flex-col flex-1">
               {/* Header: Dots & Role */}
@@ -217,7 +221,7 @@ export default function Proyek() {
                       key={j}
                       href={l.href}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 font-bold text-xs border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/50 dark:hover:bg-blue-950/40 transition-all group/link"
                     >
                       <span>{l.label}</span>

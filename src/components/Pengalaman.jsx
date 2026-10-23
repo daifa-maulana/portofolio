@@ -2,10 +2,12 @@ import Section from './Section'
 import { Briefcase, Calendar, Building2, CheckCircle2, ShieldCheck, Globe } from 'lucide-react'
 import useLanguage from '../hooks/useLanguage'
 import { translations } from '../data/translations'
+import { usePortfolio } from '../context/PortfolioContext'
 
 export default function Pengalaman() {
   const [lang] = useLanguage()
-  const t = translations[lang].pengalaman
+  const { content } = usePortfolio()
+  const t = (content && content[lang]?.pengalaman) || translations[lang].pengalaman
 
   return (
     <Section

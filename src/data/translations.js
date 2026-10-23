@@ -13,7 +13,7 @@ export const translations = {
       badge: 'Sedang magang @ Geometri Indonesia',
       greeting: 'Halo, saya',
       name: "Da'ifa Maulana",
-      role: 'Web Developer Intern @ Geometri Indonesia · S1 Teknik Informatika',
+      role: 'Web Developer & Technical SEO Specialist · S1 Teknik Informatika',
       bio: 'Fokus pada pengembangan web modern, pemeliharaan sistem, serta optimasi Technical SEO — memanfaatkan workflow efisien untuk menghasilkan solusi web yang responsif, cepat, dan ramah mesin pencari.',
       statWeb: 'Pusat (geo-metri.id) & 4 Cabang',
       statHealth: 'Site Health Score (Ahrefs)',
@@ -21,7 +21,7 @@ export const translations = {
       btnProjects: 'Lihat Proyek',
       btnContact: 'Hubungi Saya',
       btnResume: 'Resume / CV',
-      tagWeb: 'Web Developer Intern'
+      tagWeb: 'Web Developer'
     },
     profil: {
       title: 'Tentang Saya',
@@ -151,7 +151,7 @@ export const translations = {
       badge: 'Currently interning @ Geometri Indonesia',
       greeting: "Hello, I'm",
       name: "Da'ifa Maulana",
-      role: 'Web Developer Intern @ Geometri Indonesia · Computer Science Student',
+      role: 'Web Developer & Technical SEO Specialist · Computer Science Student',
       bio: 'Focused on modern web development, system maintenance, and Technical SEO — leveraging efficient workflows to deliver responsive, fast, and search-engine-friendly web solutions.',
       statWeb: 'Main (geo-metri.id) & 4 Branches',
       statHealth: 'Site Health Score (Ahrefs)',
@@ -159,7 +159,7 @@ export const translations = {
       btnProjects: 'View Projects',
       btnContact: 'Get in Touch',
       btnResume: 'Resume / CV',
-      tagWeb: 'Web Developer Intern'
+      tagWeb: 'Web Developer'
     },
     profil: {
       title: 'About Me',

@@ -32,10 +32,32 @@ const techTags = [
 ]
 
 
+import { usePortfolio } from '../context/PortfolioContext'
+
 export default function Hero() {
   const [heroTab, setHeroTab] = useState('code') // 'photo' | 'code'
   const [lang] = useLanguage()
-  const t = translations[lang].hero
+  const { content, settings, heroContacts, heroTechTags } = usePortfolio()
+  const t = (content && content[lang]?.hero) || translations[lang].hero
+
+  const getContactIcon = (type) => {
+    switch (type) {
+      case 'email': return Mail
+      case 'phone': return Phone
+      case 'github': return GithubIcon
+      default: return MapPin
+    }
+  }
+
+  const activeContacts = heroContacts && heroContacts.length > 0
+    ? heroContacts.map(c => ({
+        icon: getContactIcon(c.type),
+        label: c.label,
+        href: c.href || null,
+      }))
+    : contacts
+
+  const activeTechTags = heroTechTags && heroTechTags.length > 0 ? heroTechTags : techTags
 
   const stats = [
     { icon: Globe2, value: '5 Web', label: t.statWeb },
@@ -48,15 +70,17 @@ export default function Hero() {
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         {/* LEFT */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50/80 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 shadow-sm backdrop-blur-sm">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/70" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-            </span>
-            <span className="text-xs font-semibold text-blue-950 dark:text-blue-200">
-              {t.badge}
-            </span>
-          </div>
+          {settings?.showHeroBadge && t.badge && (
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50/80 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 shadow-sm backdrop-blur-sm">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/70" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+              <span className="text-xs font-semibold text-blue-950 dark:text-blue-200">
+                {t.badge}
+              </span>
+            </div>
+          )}
 
           <div className="space-y-3">
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
@@ -76,14 +100,14 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-2.5 pt-1">
-            {contacts.map((c, i) => {
+            {activeContacts.map((c, i) => {
               const Icon = c.icon
               return c.href ? (
                 <a
                   key={i}
                   href={c.href}
                   target={c.href.startsWith('http') ? '_blank' : undefined}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-accent dark:hover:border-accent-dark hover:text-accent dark:hover:text-accent-dark shadow-sm hover:shadow transition-all group"
                 >
                   <Icon className="w-3.5 h-3.5 text-slate-400 group-hover:text-accent dark:group-hover:text-accent-dark transition-colors" />
@@ -174,9 +198,9 @@ export default function Hero() {
                 <div className="space-y-3">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 ring-1 ring-slate-900/5">
                     <img
-                      src="/daifa.jpg"
-                      alt="Da'ifa Maulana"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      src={settings?.heroPhotoUrl || '/daifa.jpg'}
+                      alt="Foto Da'ifa Maulana - Web Developer &amp; Technical SEO"
+                      className={`w-full h-full transition-transform duration-700 ease-out ${(settings?.heroPhotoUrl === '/avatar.png') ? 'object-contain p-4 group-hover:scale-105' : 'object-cover group-hover:scale-105'}`}
                     />
                     <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/10 text-white text-[11px] font-medium flex items-center gap-1.5 shadow-lg">
                       <Sparkles className="w-3.5 h-3.5 text-amber-400" />
@@ -185,7 +209,7 @@ export default function Hero() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    {techTags.map((t, i) => (
+                    {activeTechTags.map((t, i) => (
                       <div
                         key={i}
                         className="py-2 px-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-center flex items-center justify-center gap-1.5"
@@ -196,38 +220,53 @@ export default function Hero() {
                   </div>
                 </div>
               ) : (
-                /* Tab Content 2: developer.ts Code Snippet */
-                <div className="p-4 sm:p-5 font-mono text-xs leading-relaxed space-y-2.5 bg-[#070b14] text-slate-200 rounded-2xl border border-slate-800 shadow-inner">
-                  <div className="text-slate-500">// developer.ts</div>
-                  <div>
-                    <span className="text-purple-400 font-bold">const</span>{' '}
-                    <span className="text-blue-400 font-bold">developer</span> = {'{'}
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">name:</span>{' '}
-                    <span className="text-emerald-400">"Da'ifa Maulana"</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">role:</span>{' '}
-                    <span className="text-emerald-400">"Web Dev Intern"</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">company:</span>{' '}
-                    <span className="text-emerald-400">"Geometri ID"</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">education:</span>{' '}
-                    <span className="text-amber-400">"Informatika"</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">siteHealth:</span>{' '}
-                    <span className="text-emerald-400">"100/100 (Ahrefs)"</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">openToOpportunities:</span>{' '}
-                    <span className="text-blue-400 font-bold">true</span>
-                  </div>
-                  <div>{'};'}</div>
+                /* Tab Content 2: developer.ts Code Snippet — rendered dynamically from settings */
+                <div className="p-4 sm:p-5 font-mono text-xs leading-relaxed bg-[#070b14] text-slate-200 rounded-2xl border border-slate-800 shadow-inner overflow-auto">
+                  {settings?.developerCodeSnippet ? (
+                    <pre className="whitespace-pre-wrap text-xs leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                      <code>
+                        {/* Syntax-highlight the snippet */}
+                        {settings.developerCodeSnippet.split('\n').map((line, lineIdx) => {
+                          // colorize strings, keywords, booleans
+                          const parts = []
+                          let remaining = line
+                          const patterns = [
+                            { re: /^(\s*)(\/\/.*$)/, tag: 'comment' },
+                            { re: /^(\s*)(const|let|var|true|false|null)(\s)/, tag: 'keyword' },
+                          ]
+                          // Simple rendering — highlight quoted strings and keywords
+                          const rendered = remaining
+                            .replace(/(\/\/.*$)/g, '<comment>$1</comment>')
+                            .replace(/\b(const|let|var)\b/g, '<kw>$1</kw>')
+                            .replace(/\b(true|false|null)\b/g, '<bool>$1</bool>')
+                            .replace(/"([^"]*)"/g, '"<str>$1</str>"')
+                          const tokens = rendered.split(/(<\/?(?:comment|kw|bool|str)>)/g)
+                          let inTag = null
+                          return (
+                            <span key={lineIdx}>
+                              {tokens.map((tok, tIdx) => {
+                                if (tok === '<comment>') { inTag = 'comment'; return null }
+                                if (tok === '<kw>') { inTag = 'kw'; return null }
+                                if (tok === '<bool>') { inTag = 'bool'; return null }
+                                if (tok === '<str>') { inTag = 'str'; return null }
+                                if (tok.startsWith('</')) { const prev = inTag; inTag = null; return null }
+                                const tag = inTag
+                                inTag = null
+                                if (tag === 'comment') return <span key={tIdx} className="text-slate-500">{tok}</span>
+                                if (tag === 'kw') return <span key={tIdx} className="text-purple-400 font-bold">{tok}</span>
+                                if (tag === 'bool') return <span key={tIdx} className="text-blue-400 font-bold">{tok}</span>
+                                if (tag === 'str') return <span key={tIdx} className="text-emerald-400">{tok}</span>
+                                return <span key={tIdx}>{tok}</span>
+                              })}
+                              {'\n'}
+                            </span>
+                          )
+                        })}
+                      </code>
+                    </pre>
+                  ) : (
+                    <span className="text-slate-500 italic">// snippet belum diatur di Admin</span>
+                  )}
 
                   <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
                     <span className="text-emerald-400 flex items-center gap-1 font-semibold">

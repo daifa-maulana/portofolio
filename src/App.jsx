@@ -8,8 +8,16 @@ import Organisasi from './components/Organisasi'
 import Kontak from './components/Kontak'
 import Footer from './components/Footer'
 import Nav from './components/Nav'
+import AdminDashboard from './components/admin/AdminDashboard'
+import { PortfolioProvider, usePortfolio } from './context/PortfolioContext'
 
-export default function App() {
+function MainContent() {
+  const { isAdminView } = usePortfolio()
+
+  if (isAdminView) {
+    return <AdminDashboard />
+  }
+
   return (
     <div className="min-h-screen bg-[#f8fafc] dark:bg-[#080d1a] bg-grid-clean relative selection:bg-blue-500/20 text-slate-900 dark:text-slate-100 overflow-x-hidden">
       {/* Top subtle spotlight glow */}
@@ -30,5 +38,13 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <PortfolioProvider>
+      <MainContent />
+    </PortfolioProvider>
   )
 }

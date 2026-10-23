@@ -10,8 +10,8 @@ export default {
       },
       colors: {
         accent: {
-          DEFAULT: '#2563eb',
-          dark: '#4f8ef7',
+          DEFAULT: 'var(--color-accent, #2563eb)',
+          dark: 'var(--color-accent-dark, #4f8ef7)',
         },
       },
     },

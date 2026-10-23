@@ -2,12 +2,14 @@ import Section from './Section'
 import { Users2, Award, Flag, Sparkles, HeartHandshake, ShieldCheck } from 'lucide-react'
 import useLanguage from '../hooks/useLanguage'
 import { translations } from '../data/translations'
+import { usePortfolio } from '../context/PortfolioContext'
 
 export default function Organisasi() {
   const [lang] = useLanguage()
-  const t = translations[lang].organisasi
+  const { content, orgs: contextOrgs } = usePortfolio()
+  const t = (content && content[lang]?.organisasi) || translations[lang].organisasi
 
-  const orgs = [
+  const fallbackOrgs = [
     {
       icon: HeartHandshake,
       title: lang === 'id' ? 'Anggota PSDM' : 'HRD Department Member',
@@ -31,6 +33,15 @@ export default function Organisasi() {
     },
   ]
 
+  const activeOrgs = contextOrgs && contextOrgs.length > 0
+    ? contextOrgs.map((o, idx) => ({
+        icon: [HeartHandshake, Sparkles, Flag, Award][idx % 4],
+        title: lang === 'id' ? o.titleId : o.titleEn,
+        org: lang === 'id' ? o.orgId : o.orgEn,
+        period: o.period,
+        desc: lang === 'id' ? o.descId : o.descEn,
+      }))
+    : fallbackOrgs
 
   return (
     <Section
@@ -40,7 +51,7 @@ export default function Organisasi() {
       subtitle={t.subtitle}
     >
       <div className="grid md:grid-cols-3 gap-6 mb-6">
-        {orgs.map((o, i) => {
+        {activeOrgs.map((o, i) => {
           const Icon = o.icon
           return (
             <div

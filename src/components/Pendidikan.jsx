@@ -2,10 +2,12 @@ import Section from './Section'
 import { GraduationCap, Award, MapPin, Sparkles, ShieldCheck, ExternalLink, Calendar, FileText } from 'lucide-react'
 import useLanguage from '../hooks/useLanguage'
 import { translations } from '../data/translations'
+import { usePortfolio } from '../context/PortfolioContext'
 
 export default function Pendidikan() {
   const [lang] = useLanguage()
-  const t = translations[lang].pendidikan
+  const { content } = usePortfolio()
+  const t = (content && content[lang]?.pendidikan) || translations[lang].pendidikan
 
   return (
     <Section
@@ -55,7 +57,7 @@ export default function Pendidikan() {
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-slate-200 dark:border-slate-700/80 p-2 shrink-0 shadow-sm flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
                 <img
                   src="/gemini-certified.png"
-                  alt="Siswa Tersertifikasi Gemini"
+                  alt="Lencana Google for Education - Siswa Tersertifikasi Gemini"
                   className="w-full h-full object-contain"
                 />
               </div>
