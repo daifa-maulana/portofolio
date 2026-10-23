@@ -56,11 +56,17 @@ export default function Nav() {
           href="#hero"
           className="group flex items-center gap-2 font-mono font-black text-slate-900 dark:text-white tracking-tight text-sm"
         >
-          <img
-            src="/avatar.png"
-            alt="Da'ifa Maulana"
-            className="w-8 h-8 rounded-full object-contain group-hover:scale-105 transition-transform drop-shadow"
-          />
+          <picture>
+            <source srcSet="/avatar.webp" type="image/webp" />
+            <img
+              src="/avatar.png"
+              alt="Da'ifa Maulana"
+              width="32"
+              height="32"
+              decoding="async"
+              className="w-8 h-8 rounded-full object-contain group-hover:scale-105 transition-transform drop-shadow"
+            />
+          </picture>
           <span className="font-bold tracking-normal hidden sm:inline">
             Da'ifa<span className="text-accent dark:text-accent-dark">.dev</span>
           </span>

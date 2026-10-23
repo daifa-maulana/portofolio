@@ -195,11 +195,22 @@ export default function Hero() {
               {heroTab === 'photo' ? (
                 <div className="space-y-3">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 ring-1 ring-slate-900/5">
-                    <img
-                      src={settings?.heroPhotoUrl || '/daifa.jpg'}
-                      alt="Foto Da'ifa Maulana - Web Developer &amp; Technical SEO"
-                      className={`w-full h-full transition-transform duration-700 ease-out ${(settings?.heroPhotoUrl === '/avatar.png') ? 'object-contain p-4 group-hover:scale-105' : 'object-cover group-hover:scale-105'}`}
-                    />
+                    <picture>
+                      {(!settings?.heroPhotoUrl || settings.heroPhotoUrl === '/daifa.jpg') && (
+                        <source srcSet="/daifa.webp" type="image/webp" />
+                      )}
+                      {settings?.heroPhotoUrl === '/avatar.png' && (
+                        <source srcSet="/avatar.webp" type="image/webp" />
+                      )}
+                      <img
+                        src={settings?.heroPhotoUrl || '/daifa.jpg'}
+                        alt="Foto Da'ifa Maulana - Web Developer &amp; Technical SEO"
+                        width="400"
+                        height="500"
+                        fetchpriority="high"
+                        className={`w-full h-full transition-transform duration-700 ease-out ${(settings?.heroPhotoUrl === '/avatar.png') ? 'object-contain p-4 group-hover:scale-105' : 'object-cover group-hover:scale-105'}`}
+                      />
+                    </picture>
                     <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/10 text-white text-[11px] font-medium flex items-center gap-1.5 shadow-lg">
                       <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                       {t.tagWeb}
