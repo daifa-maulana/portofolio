@@ -35,12 +35,12 @@ export default function Organisasi() {
 
   const activeOrgs = contextOrgs && contextOrgs.length > 0
     ? contextOrgs.map((o, idx) => ({
-        icon: [HeartHandshake, Sparkles, Flag, Award][idx % 4],
-        title: lang === 'id' ? o.titleId : o.titleEn,
-        org: lang === 'id' ? o.orgId : o.orgEn,
-        period: o.period,
-        desc: lang === 'id' ? o.descId : o.descEn,
-      }))
+      icon: [HeartHandshake, Sparkles, Flag, Award][idx % 4],
+      title: lang === 'id' ? o.titleId : o.titleEn,
+      org: lang === 'id' ? o.orgId : o.orgEn,
+      period: o.period,
+      desc: lang === 'id' ? o.descId : o.descEn,
+    }))
     : fallbackOrgs
 
   return (

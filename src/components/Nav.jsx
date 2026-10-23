@@ -56,9 +56,9 @@ export default function Nav() {
           href="#hero"
           className="group flex items-center gap-2 font-mono font-black text-slate-900 dark:text-white tracking-tight text-sm"
         >
-          <img 
-            src="/avatar.png" 
-            alt="Da'ifa Maulana" 
+          <img
+            src="/avatar.png"
+            alt="Da'ifa Maulana"
             className="w-8 h-8 rounded-full object-contain group-hover:scale-105 transition-transform drop-shadow"
           />
           <span className="font-bold tracking-normal hidden sm:inline">
@@ -73,11 +73,10 @@ export default function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                  isActive
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${isActive
                     ? 'bg-white dark:bg-slate-800 text-accent dark:text-accent-dark shadow-sm font-semibold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
+                  }`}
               >
                 {l.label}
               </a>
@@ -105,7 +104,7 @@ export default function Nav() {
           >
             {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
           </button>
-          
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(o => !o)}

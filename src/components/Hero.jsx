@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  ArrowDown, 
-  FileDown, 
-  Sparkles, 
-  Globe2, 
-  Activity, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowDown,
+  FileDown,
+  Sparkles,
+  Globe2,
+  Activity,
   FolderGit2,
   User,
   Code2,
@@ -51,10 +51,10 @@ export default function Hero() {
 
   const activeContacts = heroContacts && heroContacts.length > 0
     ? heroContacts.map(c => ({
-        icon: getContactIcon(c.type),
-        label: c.label,
-        href: c.href || null,
-      }))
+      icon: getContactIcon(c.type),
+      label: c.label,
+      href: c.href || null,
+    }))
     : contacts
 
   const activeTechTags = heroTechTags && heroTechTags.length > 0 ? heroTechTags : techTags
@@ -133,7 +133,7 @@ export default function Hero() {
               {t.btnProjects}
               <ArrowDown className="w-4 h-4" />
             </a>
-            
+
             <a
               href="#kontak"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:border-accent dark:hover:border-accent-dark hover:text-accent dark:hover:text-accent-dark hover:-translate-y-0.5 shadow-sm transition-all"
@@ -156,7 +156,7 @@ export default function Hero() {
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-sm group">
             <div className="absolute -inset-2 bg-gradient-to-tr from-blue-600/20 via-indigo-600/20 to-cyan-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
-            
+
             <div className="relative rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800/90 shadow-2xl p-4 backdrop-blur-xl space-y-3">
               {/* Card Window Header & Tabs */}
               <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-800/80">
@@ -169,11 +169,10 @@ export default function Hero() {
                 <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl text-xs font-medium">
                   <button
                     onClick={() => setHeroTab('photo')}
-                    className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg transition-all ${
-                      heroTab === 'photo'
+                    className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg transition-all ${heroTab === 'photo'
                         ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm font-semibold'
-                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900'
-                    }`}
+                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white'
+                      }`}
                   >
                     <User className="w-3.5 h-3.5" />
                     <span>Foto</span>
@@ -181,11 +180,10 @@ export default function Hero() {
 
                   <button
                     onClick={() => setHeroTab('code')}
-                    className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg transition-all ${
-                      heroTab === 'code'
+                    className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg transition-all ${heroTab === 'code'
                         ? 'bg-accent dark:bg-accent-dark text-white shadow-sm font-semibold'
-                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900'
-                    }`}
+                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white'
+                      }`}
                   >
                     <Code2 className="w-3.5 h-3.5" />
                     <span>developer.ts</span>
@@ -273,7 +271,7 @@ export default function Hero() {
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Ready for hire</span>
                     </span>
-                    <span className="text-slate-500 font-mono">TypeScript 5.0</span>
+                    <span className="text-slate-400 font-mono">TypeScript 5.0</span>
                   </div>
                 </div>
               )}

@@ -222,6 +222,7 @@ export default function Proyek() {
                       href={l.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${l.label} - ${p.title}`}
                       className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 font-bold text-xs border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/50 dark:hover:bg-blue-950/40 transition-all group/link"
                     >
                       <span>{l.label}</span>
